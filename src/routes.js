@@ -1,22 +1,12 @@
 const express = require('express');
-const UserController = require('./controllers/UserController');
-// const User = require("./models/User")
+const UserController = require(__dirname +'/controllers/UserController');
+const AddressController = require(__dirname +'/controllers/AddressController');
 
 const routes = express.Router();
 
-
-// routes.get('/users', UserController.index);
+routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
-// if (User.name.length == undefined || User.email.length == undefined ) {
-//     User.name = "Lucas",
-//     User.email = "diniz3003@gmail.com"
-//   } 
-
-
-
-// routes.get('/',(req,res)=>{
-//     return res.json({hello:'word'});
-// })
+routes.post('/users/:userId/addresses', AddressController.store);
 
 module.exports = routes;

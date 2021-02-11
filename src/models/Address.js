@@ -23,30 +23,34 @@ const checkcon = async () => {
 
 checkcon();
 
-class User extends Model {
+class Address extends Model {
     static associate(models) {
         //pass
     };
     static init(sequelize){
         super.init(
         {
-            name:DataTypes.STRING,
-            email:DataTypes.STRING,
-            
+            userId: DataTypes.INTEGER,
+            zipcode:DataTypes.STRING,
+            street:DataTypes.STRING,
+            number:DataTypes.INTEGER,
 
         },{
             sequelize,
-            modelName: "User",
-            tableName: "users"
+            modelName: "Address",
+            tableName: "addresses"
         })        
         // return this       
         
-    };
+    }
+    static associate (models){
+        this.belongsTo(models.User, { foreignKey:'userId', as: 'user'})
+    }
     
     
 }
 
-User.init(sequelize);
+Address.init(sequelize);
 
-module.exports = User;
+module.exports = Address;
 
