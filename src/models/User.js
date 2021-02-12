@@ -38,11 +38,14 @@ class User extends Model {
             sequelize,
             modelName: "User",
             tableName: "users"
+            
         })        
         // return this       
         
-    };
-    
+    }
+    static associate (models){
+        this.hasMany(models.Address, { foreignKey: 'userId', as: 'addresses' });
+    }
     
 }
 

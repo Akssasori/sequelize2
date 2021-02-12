@@ -1,5 +1,6 @@
 const Address = require('../models/Address');
 const User = require('../models/User');
+const { index } = require('./UserController');
 
 module.exports = {
     async store(req, res){
@@ -24,5 +25,15 @@ module.exports = {
 
         return res.json(address);
 
+    },
+
+    async index(req, res) {
+        const { userId } = req.params;
+
+        const user = await User.findByPk(userId, {
+            include: { association: 'addresses'}
+        });
+
+        return res.json(user.addresses);
     }
 };

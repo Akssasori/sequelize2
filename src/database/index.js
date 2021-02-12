@@ -14,12 +14,15 @@
 
 const Sequelize = require('sequelize');
 let connection;
+
+
 try {
   const User = require('../models/User');
   const Address = require('../models/Address');
   connection = new Sequelize('ship22', 'root', 'coti', {
   host: 'localhost',
   dialect: 'mysql'
+  
   
 });
   User.init(connection);
@@ -29,6 +32,7 @@ try {
   Address.associate(connection.models);
 } catch(err) {
   if(err) console.log(err);
+  
 }
 
 module.exports = connection;

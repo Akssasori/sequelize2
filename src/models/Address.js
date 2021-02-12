@@ -37,8 +37,8 @@ class Address extends Model {
 
         },{
             sequelize,
-            modelName: "Address",
-            tableName: "addresses"
+            // modelName: "Address",
+            // tableName: "addresses"
         })        
         // return this       
         
